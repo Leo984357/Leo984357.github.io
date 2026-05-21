@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Not Found</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: #0a0a12;
+      color: #c9d1d9;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .terminal {
+      max-width: 600px;
+      width: 100%;
+    }
+    .bar {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px 12px 0 0;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .dot { width: 13px; height: 13px; border-radius: 50%; }
+    .r { background: #ff5f56; }
+    .y { background: #ffbd2e; }
+    .g { background: #27c93f; }
+    .body {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-top: none;
+      border-radius: 0 0 12px 12px;
+      padding: 36px;
+      line-height: 2;
+    }
+    .prompt { color: #3fb950; font-weight: 600; }
+    .user { color: #58a6ff; }
+    .path { color: #d29922; }
+    .error { color: #f85149; font-weight: 700; }
+    .dim { color: #484f58; }
+    .link { color: #58a6ff; text-decoration: none; }
+    .link:hover { border-bottom: 1px solid #58a6ff; }
+    .cursor {
+      display: inline-block;
+      width: 10px; height: 20px;
+      background: #3fb950;
+      vertical-align: text-bottom;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+  </style>
+</head>
+<body>
+  <div class="terminal">
+    <div class="bar">
+      <span class="dot r"></span>
+      <span class="dot y"></span>
+      <span class="dot g"></span>
+    </div>
+    <div class="body">
+      <p><span class="prompt"><span class="user">shuoren</span>@<span class="user">portfolio</span></span>:<span class="path">~</span>$ <span style="color:#e6edf3;">curl -s https://leo984357.github.io/this-page</span></p>
+      <p><span class="error">404 Not Found</span></p>
+      <p style="color:#8b949e;">The requested resource was not found on this server.</p>
+      <p style="color:#8b949e;font-family:'Noto Sans SC',sans-serif;">你要找的页面不存在。</p>
+      <p>&nbsp;</p>
+      <p style="color:#484f58;">Try:</p>
+      <p style="padding-left:20px;">$ <a class="link" href="/">cd ~ && ./index.html</a></p>
+      <p style="padding-left:20px;">$ <a class="link" href="https://github.com/Leo984357">cat ~/github</a></p>
+      <p>&nbsp;</p>
+      <p><span class="prompt"><span class="user">shuoren</span>@<span class="user">portfolio</span></span>:<span class="path">~</span>$ <span class="cursor"></span></p>
+    </div>
+  </div>
+</body>
+</html>
