@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shuoren Li</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+      background: #0a0a1a;
+      color: #e0e0e0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 20px;
+    }
+    .container {
+      max-width: 800px;
+      width: 100%;
+    }
+    .terminal-bar {
+      background: #0d0d1f;
+      border: 1px solid #2a2a4a;
+      border-radius: 10px 10px 0 0;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .dot.red { background: #ff5f56; }
+    .dot.yellow { background: #ffbd2e; }
+    .dot.green { background: #27c93f; }
+    .terminal-title {
+      font-size: 12px;
+      color: #555;
+      margin-left: 12px;
+    }
+    .terminal-body {
+      background: #111122;
+      border: 1px solid #2a2a4a;
+      border-top: none;
+      border-radius: 0 0 10px 10px;
+      padding: 30px;
+      line-height: 1.8;
+    }
+    .prompt { color: #00d68f; }
+    .path { color: #3b82f6; }
+    .text-white { color: #ffffff; }
+    .text-dim { color: #888; }
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 16px;
+      background: #fff;
+      animation: blink 1s step-end infinite;
+      vertical-align: text-bottom;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+    .section { margin: 24px 0; }
+    .section-title { color: #00d68f; margin-bottom: 8px; }
+    .cmd { color: #e0e0e0; }
+    .output { color: #aaa; padding-left: 20px; margin-bottom: 8px; }
+    .highlight { color: #ffbd2e; }
+    .link { color: #3b82f6; text-decoration: none; }
+    .link:hover { text-decoration: underline; }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+    .badge-row img { height: 28px; }
+    hr {
+      border: none;
+      border-top: 1px solid #2a2a4a;
+      margin: 24px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="terminal-bar">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+      <span class="terminal-title">shuoren@homepage</span>
+    </div>
+    <div class="terminal-body">
+      <p><span class="prompt">shuoren@homepage</span><span class="text-white">:</span><span class="path">~</span><span class="text-white">$ </span><span class="cmd">cat about.md</span></p>
+      <div class="output">
+        <p><span class="highlight">Shuoren Li</span></p>
+        <p>Financial Engineering @ Guangdong University of Foreign Studies</p>
+        <p>Quantitative Investment · Alternative Data · Asset Pricing</p>
+      </div>
+
+      <p><span class="prompt">shuoren@homepage</span><span class="text-white">:</span><span class="path">~</span><span class="text-white">$ </span><span class="cmd">ls projects/</span></p>
+      <div class="section">
+        <div class="output">
+          <p><a class="link" href="https://github.com/Leo984357/qmt_investment_assistant">QMT Investment Assistant</a> — HS300 quantitative trading strategy with LightGBM</p>
+          <p><a class="link" href="https://github.com/Leo984357/genai_china_replication">GenAI China Replication</a> — NLP pipeline for corporate LLM exposure factor</p>
+          <p><a class="link" href="https://github.com/Leo984357/fund-pool-model">Fund Pool Model</a> — Fund pool construction & performance evaluation</p>
+          <p><a class="link" href="https://github.com/Leo984357/gamma-ai-exposure">Gamma AI Exposure</a> — AI exposure via earnings call NLP</p>
+          <p><a class="link" href="https://github.com/Leo984357/smart-fund">Smart Fund</a> — Fund data scraping & analytical dashboard</p>
+          <p><a class="link" href="https://github.com/Leo984357/hs300-research-skeleton">HS300 Research Skeleton</a> — Multi-factor research framework</p>
+        </div>
+      </div>
+
+      <p><span class="prompt">shuoren@homepage</span><span class="text-white">:</span><span class="path">~</span><span class="text-white">$ </span><span class="cmd">cat experience.md</span></p>
+      <div class="output">
+        <p>Securities Times — Research Intern (Shenzhen · Jul 2025 – Sep 2025)</p>
+        <p>China Foreign Trade Centre — VIP Affairs Intern (Guangzhou · Sep 2025 – Nov 2025)</p>
+        <p>Tencent CSIG — Operations Intern (Shenzhen · Jul 2024 – Aug 2024)</p>
+      </div>
+
+      <p><span class="prompt">shuoren@homepage</span><span class="text-white">:</span><span class="path">~</span><span class="text-white">$ </span><span class="cmd">cat research.md</span></p>
+      <div class="output">
+        <p><span class="highlight">Corporate LLM Exposure Factor & Asset Pricing</span> — First Author</p>
+        <p>~7.5M job postings (2014–2024) → NLP → firm-year AI exposure factor (Ef) → A-share pricing</p>
+        <p>&nbsp;</p>
+        <p><span class="highlight">HS300 LightGBM Multi-Factor Strategy</span> — First Prize, FinTech Diankuan Cup (Top 2%)</p>
+        <p>81.87% cumulative return vs 11.87% benchmark (2022–2025) · Live on QMT</p>
+      </div>
+
+      <hr />
+
+      <p><span class="prompt">shuoren@homepage</span><span class="text-white">:</span><span class="path">~</span><span class="text-white">$ </span><span class="cmd">./contact.sh</span></p>
+      <div class="badge-row">
+        <a href="mailto:leo2974656036@foxmail.com"><img src="https://img.shields.io/badge/leo2974656036@foxmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white" /></a>
+        <a href="https://github.com/Leo984357"><img src="https://img.shields.io/badge/github.com/Leo984357-181717?style=for-the-badge&logo=github&logoColor=white" /></a>
+        <img src="https://img.shields.io/badge/+86%2013631696778-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
+      </div>
+
+      <p style="margin-top:20px;"><span class="prompt">shuoren@homepage</span><span class="text-white">:</span><span class="path">~</span><span class="text-white">$ </span><span class="cursor"></span></p>
+    </div>
+  </div>
+</body>
+</html>
