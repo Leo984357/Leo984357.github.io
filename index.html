@@ -6,76 +6,210 @@
   <title>Shuoren Li</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
-      background: #0a0a1a;
-      color: #e0e0e0;
+      background: #0a0a12;
+      color: #c9d1d9;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 60px 20px;
+      justify-content: center;
+      padding: 40px 20px;
     }
+
     .container {
-      max-width: 800px;
+      max-width: 860px;
       width: 100%;
     }
+
     .terminal-bar {
-      background: #0d0d1f;
-      border: 1px solid #2a2a4a;
-      border-radius: 10px 10px 0 0;
-      padding: 12px 16px;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px 12px 0 0;
+      padding: 14px 18px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
-    .dot { width: 12px; height: 12px; border-radius: 50%; }
+
+    .dot { width: 13px; height: 13px; border-radius: 50%; flex-shrink: 0; }
     .dot.red { background: #ff5f56; }
     .dot.yellow { background: #ffbd2e; }
     .dot.green { background: #27c93f; }
+
     .terminal-title {
       font-size: 12px;
-      color: #555;
-      margin-left: 12px;
+      color: #484f58;
+      margin-left: 10px;
+      letter-spacing: 0.5px;
+      user-select: none;
     }
+
     .terminal-body {
-      background: #111122;
-      border: 1px solid #2a2a4a;
+      background: #0d1117;
+      border: 1px solid #30363d;
       border-top: none;
-      border-radius: 0 0 10px 10px;
-      padding: 30px;
-      line-height: 1.8;
+      border-radius: 0 0 12px 12px;
+      padding: 32px 36px;
+      line-height: 1.9;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      min-height: 400px;
     }
-    .prompt { color: #00d68f; }
-    .path { color: #3b82f6; }
-    .text-white { color: #ffffff; }
-    .text-dim { color: #888; }
-    .cursor {
-      display: inline-block;
-      width: 8px;
-      height: 16px;
-      background: #fff;
-      animation: blink 1s step-end infinite;
-      vertical-align: text-bottom;
+
+    .line { margin-bottom: 2px; }
+
+    .prompt { color: #3fb950; font-weight: 600; }
+    .prompt-user { color: #58a6ff; }
+    .path-dir { color: #d29922; }
+    .cmd { color: #e6edf3; }
+    .output { color: #8b949e; }
+    .output p { margin: 2px 0; }
+
+    .highlight { color: #f0883e; font-weight: 600; }
+    .accent { color: #58a6ff; }
+    .green { color: #3fb950; }
+    .dim { color: #484f58; }
+
+    .link {
+      color: #58a6ff;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
     }
-    @keyframes blink { 50% { opacity: 0; } }
-    .section { margin: 24px 0; }
-    .section-title { color: #00d68f; margin-bottom: 8px; }
-    .cmd { color: #e0e0e0; }
-    .output { color: #aaa; padding-left: 20px; margin-bottom: 8px; }
-    .highlight { color: #ffbd2e; }
-    .link { color: #3b82f6; text-decoration: none; }
-    .link:hover { text-decoration: underline; }
-    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
-    .badge-row img { height: 28px; }
+    .link:hover {
+      border-bottom-color: #58a6ff;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 16px 0 0;
+    }
+    .badge-row img {
+      height: 28px;
+      border-radius: 4px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .badge-row img:hover {
+      transform: translateY(-2px);
+    }
+
     hr {
       border: none;
-      border-top: 1px solid #2a2a4a;
-      margin: 24px 0;
+      border-top: 1px solid #21262d;
+      margin: 20px 0;
     }
+
+    .cursor-blink {
+      display: inline-block;
+      width: 10px;
+      height: 20px;
+      background: #3fb950;
+      vertical-align: text-bottom;
+      margin-left: 4px;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .typing-cursor {
+      display: inline-block;
+      width: 10px;
+      height: 20px;
+      background: #3fb950;
+      vertical-align: text-bottom;
+      margin-left: 2px;
+      animation: blink 1s step-end infinite;
+    }
+
+    .ascii-art {
+      color: #3fb950;
+      font-size: 12px;
+      line-height: 1.3;
+      margin-bottom: 16px;
+      white-space: pre;
+    }
+
+    .skill-tag {
+      display: inline-block;
+      padding: 3px 12px;
+      margin: 3px 4px 3px 0;
+      border: 1px solid #21262d;
+      border-radius: 6px;
+      font-size: 12px;
+      color: #8b949e;
+      transition: all 0.2s;
+    }
+    .skill-tag:hover {
+      border-color: #3fb950;
+      color: #3fb950;
+    }
+
+    .project-line {
+      margin: 6px 0;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+    .project-name {
+      color: #58a6ff;
+      min-width: 200px;
+    }
+    .project-desc {
+      color: #8b949e;
+      font-size: 13px;
+    }
+
+    .exp-line {
+      margin: 3px 0;
+      display: flex;
+      gap: 16px;
+    }
+    .exp-date {
+      color: #484f58;
+      min-width: 130px;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+    .exp-detail {
+      color: #8b949e;
+    }
+    .exp-company {
+      color: #e6edf3;
+      font-weight: 600;
+    }
+
+    .indent { padding-left: 26px; }
+
+    @media (max-width: 640px) {
+      body { padding: 16px 10px; }
+      .terminal-body { padding: 20px 16px; }
+      .project-line { flex-direction: column; gap: 2px; }
+      .project-name { min-width: auto; }
+      .exp-line { flex-direction: column; gap: 2px; }
+      .exp-date { min-width: auto; }
+      .ascii-art { font-size: 8px; }
+    }
+
+    /* scanline effect */
+    .terminal-body::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255,255,255,0.02) 2px,
+        rgba(255,255,255,0.02) 4px
+      );
+      pointer-events: none;
+    }
+    .terminal-body { position: relative; overflow: hidden; }
   </style>
 </head>
 <body>
@@ -84,55 +218,185 @@
       <span class="dot red"></span>
       <span class="dot yellow"></span>
       <span class="dot green"></span>
-      <span class="terminal-title">shuoren@homepage</span>
+      <span class="terminal-title">shuoren@portfolio — zsh</span>
     </div>
-    <div class="terminal-body">
-      <p><span class="prompt">shuoren@homepage</span><span class="text-white">:</span><span class="path">~</span><span class="text-white">$ </span><span class="cmd">cat about.md</span></p>
-      <div class="output">
-        <p><span class="highlight">Shuoren Li</span></p>
-        <p>Financial Engineering @ Guangdong University of Foreign Studies</p>
-        <p>Quantitative Investment · Alternative Data · Asset Pricing</p>
+    <div class="terminal-body" id="terminal">
+
+      <div class="ascii-art" id="ascii-header"></div>
+
+      <div id="lines"></div>
+
+      <div id="current-line" class="line" style="display:none;">
+        <span class="prompt"><span class="prompt-user">shuoren</span>@<span class="prompt-user">portfolio</span></span>:<span class="path-dir">~</span>$ <span class="cmd" id="cmd-text"></span><span class="typing-cursor" id="type-cursor"></span>
       </div>
 
-      <p><span class="prompt">shuoren@homepage</span><span class="text-white">:</span><span class="path">~</span><span class="text-white">$ </span><span class="cmd">ls projects/</span></p>
-      <div class="section">
-        <div class="output">
-          <p><a class="link" href="https://github.com/Leo984357/qmt_investment_assistant">QMT Investment Assistant</a> — HS300 quantitative trading strategy with LightGBM</p>
-          <p><a class="link" href="https://github.com/Leo984357/genai_china_replication">GenAI China Replication</a> — NLP pipeline for corporate LLM exposure factor</p>
-          <p><a class="link" href="https://github.com/Leo984357/fund-pool-model">Fund Pool Model</a> — Fund pool construction & performance evaluation</p>
-          <p><a class="link" href="https://github.com/Leo984357/gamma-ai-exposure">Gamma AI Exposure</a> — AI exposure via earnings call NLP</p>
-          <p><a class="link" href="https://github.com/Leo984357/smart-fund">Smart Fund</a> — Fund data scraping & analytical dashboard</p>
-          <p><a class="link" href="https://github.com/Leo984357/hs300-research-skeleton">HS300 Research Skeleton</a> — Multi-factor research framework</p>
-        </div>
+      <div id="prompt-end" class="line">
+        <span class="prompt"><span class="prompt-user">shuoren</span>@<span class="prompt-user">portfolio</span></span>:<span class="path-dir">~</span>$ <span class="cursor-blink"></span>
       </div>
 
-      <p><span class="prompt">shuoren@homepage</span><span class="text-white">:</span><span class="path">~</span><span class="text-white">$ </span><span class="cmd">cat experience.md</span></p>
-      <div class="output">
-        <p>Securities Times — Research Intern (Shenzhen · Jul 2025 – Sep 2025)</p>
-        <p>China Foreign Trade Centre — VIP Affairs Intern (Guangzhou · Sep 2025 – Nov 2025)</p>
-        <p>Tencent CSIG — Operations Intern (Shenzhen · Jul 2024 – Aug 2024)</p>
-      </div>
-
-      <p><span class="prompt">shuoren@homepage</span><span class="text-white">:</span><span class="path">~</span><span class="text-white">$ </span><span class="cmd">cat research.md</span></p>
-      <div class="output">
-        <p><span class="highlight">Corporate LLM Exposure Factor & Asset Pricing</span> — First Author</p>
-        <p>~7.5M job postings (2014–2024) → NLP → firm-year AI exposure factor (Ef) → A-share pricing</p>
-        <p>&nbsp;</p>
-        <p><span class="highlight">HS300 LightGBM Multi-Factor Strategy</span> — First Prize, FinTech Diankuan Cup (Top 2%)</p>
-        <p>81.87% cumulative return vs 11.87% benchmark (2022–2025) · Live on QMT</p>
-      </div>
-
-      <hr />
-
-      <p><span class="prompt">shuoren@homepage</span><span class="text-white">:</span><span class="path">~</span><span class="text-white">$ </span><span class="cmd">./contact.sh</span></p>
-      <div class="badge-row">
-        <a href="mailto:leo2974656036@foxmail.com"><img src="https://img.shields.io/badge/leo2974656036@foxmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white" /></a>
-        <a href="https://github.com/Leo984357"><img src="https://img.shields.io/badge/github.com/Leo984357-181717?style=for-the-badge&logo=github&logoColor=white" /></a>
-
-      </div>
-
-      <p style="margin-top:20px;"><span class="prompt">shuoren@homepage</span><span class="text-white">:</span><span class="path">~</span><span class="text-white">$ </span><span class="cursor"></span></p>
     </div>
   </div>
+
+  <script>
+    const ASCII_HEADER = [
+      "╔══════════════════════════════════════════════════╗",
+      "║   ███████╗██╗  ██╗██╗   ██╗ ██████╗ ██████╗ ███████╗███╗   ██╗  ║",
+      "║   ██╔════╝██║  ██║██║   ██║██╔═══██╗██╔══██╗██╔════╝████╗  ██║  ║",
+      "║   ███████╗███████║██║   ██║██║   ██║██████╔╝█████╗  ██╔██╗ ██║  ║",
+      "║   ╚════██║██╔══██║██║   ██║██║   ██║██╔══██╗██╔══╝  ██║╚██╗██║  ║",
+      "║   ███████║██║  ██║╚██████╔╝╚██████╔╝██║  ██║███████╗██║ ╚████║  ║",
+      "║   ╚══════╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝  ║",
+      "╚══════════════════════════════════════════════════╝"
+    ].join('\n');
+
+    const sections = [
+      {
+        cmd: 'whoami',
+        output: [
+          { html: '<span class="highlight">Shuoren Li</span>' },
+          { html: 'Financial Engineering @ <span class="accent">Guangdong University of Foreign Studies</span>' },
+          { html: '<span class="dim">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>' },
+          { html: 'Quantitative Investment  ·  Alternative Data  ·  Asset Pricing' },
+          { text: 'First Author — Corporate LLM Exposure Factor & Asset Pricing' },
+        ]
+      },
+      {
+        cmd: 'ls skills/',
+        output: [
+          { html: `<span class="skill-tag">Python</span> <span class="skill-tag">C</span> <span class="skill-tag">SQL</span> <span class="skill-tag">LaTeX</span>` },
+          { html: `<span class="skill-tag">LightGBM</span> <span class="skill-tag">scikit-learn</span> <span class="skill-tag">Pandas</span> <span class="skill-tag">Git</span> <span class="skill-tag">QMT</span>` },
+          { html: `<span class="skill-tag">Wind</span> <span class="skill-tag">CSMAR</span> <span class="skill-tag">iFind</span> <span class="skill-tag">AKShare</span> <span class="skill-tag">Selenium</span> <span class="skill-tag">PySide6</span> <span class="skill-tag">SQLite</span>` },
+        ]
+      },
+      {
+        cmd: 'ls -l projects/',
+        output: [
+          { html: `<div class="project-line"><span class="project-name"><a class="link" href="https://github.com/Leo984357/qmt_investment_assistant">qmt_investment_assistant/</a></span><span class="project-desc">HS300 quantitative trading strategy with LightGBM</span></div>` },
+          { html: `<div class="project-line"><span class="project-name"><a class="link" href="https://github.com/Leo984357/genai_china_replication">genai_china_replication/</a></span><span class="project-desc">NLP pipeline for corporate LLM exposure factor</span></div>` },
+          { html: `<div class="project-line"><span class="project-name"><a class="link" href="https://github.com/Leo984357/fund-pool-model">fund-pool-model/</a></span><span class="project-desc">Fund pool construction & performance evaluation</span></div>` },
+          { html: `<div class="project-line"><span class="project-name"><a class="link" href="https://github.com/Leo984357/fund-pool-model-rewritten">fund-pool-model-rewritten/</a></span><span class="project-desc">Refactored fund pool with improved architecture</span></div>` },
+          { html: `<div class="project-line"><span class="project-name"><a class="link" href="https://github.com/Leo984357/gamma-ai-exposure">gamma-ai-exposure/</a></span><span class="project-desc">AI exposure via earnings call NLP</span></div>` },
+          { html: `<div class="project-line"><span class="project-name"><a class="link" href="https://github.com/Leo984357/smart-fund">smart-fund/</a></span><span class="project-desc">Fund data scraping & analytical dashboard</span></div>` },
+          { html: `<div class="project-line"><span class="project-name"><a class="link" href="https://github.com/Leo984357/hs300-research-skeleton">hs300-research-skeleton/</a></span><span class="project-desc">HS300 multi-factor research framework</span></div>` },
+        ]
+      },
+      {
+        cmd: 'cat experience.md',
+        output: [
+          { html: `<div class="exp-line"><span class="exp-date">Jul 2025 – Sep 2025</span><span class="exp-detail"><span class="exp-company">Securities Times</span> · Research Intern <span class="dim">(Shenzhen)</span></span></div>` },
+          { html: `<div class="exp-line"><span class="exp-date">Sep 2025 – Nov 2025</span><span class="exp-detail"><span class="exp-company">China Foreign Trade Centre</span> · VIP Affairs Intern <span class="dim">(Guangzhou)</span></span></div>` },
+          { html: `<div class="exp-line"><span class="exp-date">Jul 2024 – Aug 2024</span><span class="exp-detail"><span class="exp-company">Tencent CSIG</span> · Operations Intern <span class="dim">(Shenzhen)</span></span></div>` },
+        ]
+      },
+      {
+        cmd: 'cat research.md',
+        output: [
+          { html: '<span class="highlight">Corporate LLM Exposure Factor & Asset Pricing</span> — <em>First Author</em>' },
+          { text: '~7.5M job postings (2014–2024) → NLP pipeline → firm-year AI exposure factor (Ef) → Chinese A-share asset pricing.' },
+          { text: '' },
+          { html: '<span class="highlight">HS300 LightGBM Multi-Factor Strategy</span> — <em>First Prize, FinTech Diankuan Cup (Top 2%)</em>' },
+          { text: '81.87% cumulative return vs 11.87% benchmark (2022–2025). Live on QMT.' },
+        ]
+      },
+      {
+        cmd: './contact.sh',
+        output: [
+          { html: `<div class="badge-row">
+            <a href="mailto:leo2974656036@foxmail.com"><img src="https://img.shields.io/badge/leo2974656036@foxmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white" /></a>
+            <a href="https://github.com/Leo984357"><img src="https://img.shields.io/badge/github.com/Leo984357-181717?style=for-the-badge&logo=github&logoColor=white" /></a>
+            <img src="https://img.shields.io/badge/Guangzhou%2FShenzhen-00C853?style=for-the-badge&logo=googlemaps&logoColor=white" />
+          </div>` },
+        ]
+      },
+    ];
+
+    let sectionIdx = 0;
+    let lineIdx = 0;
+    let charIdx = 0;
+    let isTyping = false;
+    let isOutput = false;
+
+    const linesEl = document.getElementById('lines');
+    const currentLine = document.getElementById('current-line');
+    const cmdText = document.getElementById('cmd-text');
+    const typeCursor = document.getElementById('type-cursor');
+    const promptEnd = document.getElementById('prompt-end');
+
+    function typeCommand(cmd, cb) {
+      isTyping = true;
+      isOutput = false;
+      currentLine.style.display = 'block';
+      promptEnd.style.display = 'none';
+      cmdText.textContent = '';
+      charIdx = 0;
+
+      function tick() {
+        if (charIdx < cmd.length) {
+          cmdText.textContent += cmd[charIdx];
+          charIdx++;
+          const delay = 40 + Math.random() * 30;
+          setTimeout(tick, delay);
+        } else {
+          isTyping = false;
+          typeCursor.style.display = 'none';
+          setTimeout(cb, 400);
+        }
+      }
+      tick();
+    }
+
+    function showLine(html) {
+      const p = document.createElement('div');
+      p.className = 'line output indent';
+      p.innerHTML = html;
+      linesEl.appendChild(p);
+    }
+
+    function showCommand(cmd) {
+      const p = document.createElement('div');
+      p.className = 'line';
+      p.innerHTML = `<span class="prompt"><span class="prompt-user">shuoren</span>@<span class="prompt-user">portfolio</span></span>:<span class="path-dir">~</span>$ <span class="cmd">${cmd}</span>`;
+      linesEl.appendChild(p);
+    }
+
+    function runSection() {
+      if (sectionIdx >= sections.length) {
+        currentLine.style.display = 'none';
+        promptEnd.style.display = 'block';
+        return;
+      }
+
+      const section = sections[sectionIdx];
+      lineIdx = 0;
+
+      typeCommand(section.cmd, () => {
+        showCommand(section.cmd);
+
+        function showNextLine() {
+          if (lineIdx < section.output.length) {
+            const out = section.output[lineIdx];
+            lineIdx++;
+            showLine(out.html || out.text);
+            const delay = out.text === '' ? 100 : 200 + Math.random() * 100;
+            setTimeout(showNextLine, delay);
+          } else {
+            if (sectionIdx < sections.length - 1) {
+              setTimeout(() => {
+                linesEl.appendChild(document.createElement('hr'));
+              }, 300);
+            }
+            sectionIdx++;
+            typeCursor.style.display = 'inline-block';
+            setTimeout(runSection, 500);
+          }
+        }
+
+        setTimeout(showNextLine, 300);
+      });
+    }
+
+    document.getElementById('ascii-header').textContent = ASCII_HEADER;
+    setTimeout(runSection, 600);
+  </script>
 </body>
 </html>
