@@ -1,33 +1,33 @@
-# Shuoren Li · 个人作品集
+# Shuoren Li · Research × Engineering
 
-围绕量化研究、金融数据工程与研究工具的个人主页。精选项目、真实界面、研究方向和经历在页面加载后直接可见。
+[**打开作品集 ↗**](https://leo984357.github.io/)
 
-**在线访问：[leo984357.github.io](https://leo984357.github.io/)**
+金融数据、量化研究与 Agent 工具。以彩色 ASCII 星空为视觉主线，用真实界面和公开案例展示研究与工程成果。
 
-## 本地预览
+![The Starry Night — 4,386 colored ASCII characters](assets/starry-night-ascii.png)
+
+## 体验
+
+- **会回应光标的星空**：读取 SVG 中 4,386 个真实彩色字符，在 Canvas 中重新绘制；移动光标或轻触会局部点亮字符，可暂停。
+- **快捷导航**：`⌘ K` / `Ctrl K` 搜索项目和页面，支持方向键、Enter、Esc 与焦点恢复。
+- **项目筛选**：按数据工程、量化研究和 Agent 工具浏览三个精选项目。
+- **真实成果**：委托理财工作台使用公开脱敏样例，16 家公司、4,372 条记录，基准日 2026-08-25。QMT 展示研究流程和模拟执行；基金投研提供合成案例。
+- **渐进增强**：正文、链接、图片不依赖 JavaScript；支持键盘操作、系统减少动态效果设置、手机屏幕和无脚本阅读。
+
+## 本地运行
 
 ```bash
 python3 -m http.server 8000
 ```
 
-打开 <http://localhost:8000>。无需安装依赖或构建。
-
-## 页面结构
-
-- 《星月夜》横幅与个人介绍
-- 三个精选项目：委托理财分析框架、QMT 研究系统、公募基金投研 Skill
-- 研究实验、辅助工具、研究方向与经历
-- 邮件、GitHub 与项目源码入口
-
-## 维护
+访问 <http://localhost:8000>。原生 HTML / CSS / JavaScript，无构建流程和第三方运行时依赖。
 
 | 文件 | 内容 |
 | --- | --- |
-| [index.html](index.html) | 语义化页面内容、项目链接与分享元信息 |
-| [style.css](style.css) | 桌面和手机布局、键盘焦点、减少动态效果设置 |
-| [assets/](assets/) | 自托管画作、真实工作台截图与图标 |
+| [index.html](index.html) | 页面结构、项目事实、链接与分享信息 |
+| [style.css](style.css) | 视觉系统、响应布局、交互与无障碍样式 |
+| [script.js](script.js) | ASCII 星空、快捷导航、筛选、滚动反馈 |
+| [assets/](assets/) | 字符画、真实工作台截图、图标 |
 | [404.html](404.html) | 页面不存在时的返回入口 |
 
-网站使用原生 HTML/CSS，正文与导航无需 JavaScript。项目介绍以公开仓库当前实现为准，数据样例和原型状态在项目页中说明。
-
-画作来源和展示方式见 [ARTWORK.md](assets/ARTWORK.md)。工作台截图来自仓库公开脱敏样例，基准日 2026-08-25。
+画作来源和生成说明见 [ARTWORK.md](assets/ARTWORK.md)。背景画以等宽字符构成，SVG 不含位图；PNG 是相同字符画的社交分享预览。页面中的量化轨道图与报告卡片为工作流程示意。

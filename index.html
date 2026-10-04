@@ -3,65 +3,82 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>李硕仁 Shuoren Li — 金融研究与数据工具</title>
-  <meta name="description" content="李硕仁的研究与工程作品集：上市公司委托理财分析、量化研究、公募基金投研与金融数据工具。">
-  <meta name="theme-color" content="#f6f5f0">
+  <title>李硕仁 Shuoren Li — Research × Engineering</title>
+  <meta name="description" content="李硕仁的研究与工程作品集：金融数据、量化研究、智能体工作流。从真实问题出发，把研究做成可用的工具。">
+  <meta name="theme-color" content="#080d14">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Shuoren Li · 金融研究，落到数据与工具">
-  <meta property="og:description" content="量化投资 · 另类数据 · 资产定价。查看精选项目、研究记录与使用示例。">
+  <meta property="og:title" content="Shuoren Li — Research × Engineering">
+  <meta property="og:description" content="金融研究，落到数据与工具。探索项目、实验与彩色 ASCII 星空。">
   <meta property="og:url" content="https://leo984357.github.io/">
-  <meta property="og:image" content="https://leo984357.github.io/assets/starry-night.jpg">
+  <meta property="og:image" content="https://leo984357.github.io/assets/starry-night-ascii.png">
   <link rel="canonical" href="https://leo984357.github.io/">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">跳到主要内容</a>
+  <div class="reading-progress" aria-hidden="true"></div>
   <header class="masthead wrap">
-    <a class="wordmark" href="./" aria-label="Shuoren Li 首页">SHUOREN LI<span>李硕仁</span></a>
-    <nav aria-label="主导航"><a href="#projects">项目</a><a href="#research">研究</a><a href="#about">关于</a><a href="https://github.com/Leo984357">GitHub <span aria-hidden="true">↗</span></a></nav>
+    <a class="wordmark" href="#main" aria-label="Shuoren Li 首页"><span class="brand-mark" aria-hidden="true">L<span>.</span></span><span>SHUOREN LI<span class="brand-sub">RESEARCH × ENGINEERING</span></span></a>
+    <nav aria-label="主导航"><a href="#projects">作品<span>01</span></a><a href="#research">研究<span>02</span></a><a href="#about">关于<span>03</span></a></nav>
+    <button class="command-trigger" type="button" aria-label="打开快捷导航" aria-haspopup="dialog"><span>快速导航</span><kbd>⌘ K</kbd></button>
   </header>
-  <main id="main" class="wrap">
-    <figure class="artwork">
-      <div class="painting"><img src="assets/starry-night.jpg" width="1879" height="1500" fetchpriority="high" alt="梵高《星月夜》的星空局部，蓝色旋涡与金黄色月光组成横幅"></div>
-      <figcaption><span>THE STARRY NIGHT · VINCENT VAN GOGH</span><a href="https://commons.wikimedia.org/wiki/File:VanGogh-starry_night.jpg">1889 / 星空局部 <span aria-hidden="true">↗</span></a></figcaption>
-    </figure>
-    <section class="intro" aria-labelledby="intro-title">
-      <div><p class="eyebrow">QUANTITATIVE FINANCE & RESEARCH TOOLS</p><h1 id="intro-title">金融研究，<br>落到数据与工具。</h1></div>
-      <div class="intro-note"><p>我是李硕仁，广东外语外贸大学金融工程在读。<br>关注量化投资、另类数据与资产定价，把分散的信息整理成可追溯的数据、可检验的实验和可使用的工具。</p><a class="text-link" href="mailto:leo2974656036@foxmail.com">联系我 <span aria-hidden="true">↗</span></a></div>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-kicker"><span><i class="status-dot" aria-hidden="true"></i> FINANCIAL ENGINEERING / GUANGZHOU</span><span class="hero-edition">PERSONAL PORTFOLIO — VOL. 2026</span></div>
+      <h1 id="hero-title">SHUOREN <span>LI</span><span class="hero-asterisk" aria-hidden="true">✳</span></h1>
+      <div class="hero-statement"><p>李硕仁 · 金融研究，落到数据与工具。</p><p class="mono">FIND THE SIGNAL.<br>BUILD SOMETHING REAL.</p></div>
+      <figure class="artwork" id="artwork">
+        <div class="art-topline"><span><span class="art-dot" aria-hidden="true"></span> THE STARRY NIGHT <span class="dim">/ ASCII INTERPRETATION</span></span><span>160 × 28</span></div>
+        <div class="art-stage">
+          <img id="ascii-fallback" src="assets/starry-night-ascii.svg" width="1600" height="560" fetchpriority="high" alt="以 4,386 个彩色 ASCII 字符重新呈现梵高《星月夜》的旋涡、星光与月亮">
+          <canvas id="ascii-canvas" width="1600" height="560" aria-hidden="true"></canvas>
+          <div class="art-crosshair crosshair-tl" aria-hidden="true">+</div><div class="art-crosshair crosshair-br" aria-hidden="true">+</div>
+        </div>
+        <figcaption><span class="art-hint" id="art-hint">4,386 GLYPHS · ONE STARRY NIGHT</span><div><a href="assets/ARTWORK.md" aria-label="查看 ASCII 画作来源">VAN GOGH, 1889 ↗</a><button id="motion-toggle" type="button" aria-pressed="false" hidden><span class="pause-icon" aria-hidden="true">Ⅱ</span> 暂停星光</button></div></figcaption>
+      </figure>
+      <div class="hero-bottom"><p>量化投资 / 另类数据 / 研究工具<br><span>从可追溯的数据，到可检验的实验，再到可使用的产品。</span></p><a class="explore-link" href="#projects">EXPLORE SELECTED WORK <span aria-hidden="true">↓</span></a></div>
     </section>
-    <section id="projects" class="section" aria-labelledby="projects-title">
-      <div class="section-heading"><h2 id="projects-title">精选项目</h2><span class="eyebrow">SELECTED WORK / 01—03</span></div>
-      <article class="featured project">
-        <div class="project-copy"><p class="eyebrow">01 / FINANCIAL DATA ENGINEERING</p><h3>上市公司委托理财<br>分析框架</h3><p>把分散的上市公司公告，连接成交易记录、机构关系与离线分析工作台。</p><ul class="capabilities"><li>公开公告采集与结构化抽取</li><li>产品生命周期与公司—机构关系</li><li>原文追溯、数据核验与 CSV 导出</li></ul><p class="sample-note">公开样例 · 16 家公司 · 4,372 条交易记录</p><a class="button" href="https://github.com/Leo984357/listed-company-wealth-framework">查看项目与启动说明 <span aria-hidden="true">↗</span></a></div>
-        <figure class="project-preview"><a href="assets/workbench-preview.png" aria-label="查看委托理财工作台完整截图"><img src="assets/workbench-preview.png" width="1440" height="1000" alt="使用仓库公开样例数据运行的委托理财工作台，包括资金规模、到期分布与公司分析" loading="lazy"></a><figcaption>真实运行界面 / 仓库脱敏样例，基准日 2026-08-25</figcaption></figure>
-      </article>
-      <div class="project-grid">
-        <article class="project compact"><p class="eyebrow">02 / QUANTITATIVE RESEARCH</p><h3>QMT Investment Assistant</h3><p>围绕沪深 300 的多因子研究框架，组织模型训练、组合构建、回测评估与模拟执行。</p><div class="process" aria-label="研究流程"><span>因子研究</span><span aria-hidden="true">→</span><span>模型实验</span><span aria-hidden="true">→</span><span>回测评审</span></div><p class="project-detail">LightGBM / Ridge · 配置化实验 · 研究产物留痕<br>公开代码阶段：研究与模拟执行。</p><a class="text-link" href="https://github.com/Leo984357/qmt_investment_assistant">阅读方法与运行说明 <span aria-hidden="true">↗</span></a></article>
-        <article class="project compact"><p class="eyebrow">03 / AGENT WORKFLOW</p><h3>公募基金投研 Skill</h3><p>从基金代码、持仓清单或截图出发，连接公开数据核验、风险计算、组合分析与换仓比较。</p><div class="process" aria-label="基金研究流程"><span>研究材料</span><span aria-hidden="true">→</span><span>证据核验</span><span aria-hidden="true">→</span><span>投研报告</span></div><p class="project-detail">单基金诊断 · 组合暴露 · 来源与计算记录<br>提供可复现的合成净值案例与完整报告。</p><a class="text-link" href="https://github.com/Leo984357/mutual-fund-research-skill/tree/main/examples">查看使用示例 <span aria-hidden="true">↗</span></a></article>
+
+    <section id="projects" class="work-section wrap" aria-labelledby="projects-title">
+      <div class="section-heading"><div><p class="eyebrow"><span>01</span> / SELECTED WORK</p><h2 id="projects-title">把想法，<span>做出来。</span></h2></div><p class="section-aside">金融问题是起点。<br>数据、模型和产品，是回答。</p></div>
+      <div class="work-toolbar"><div class="filters" role="group" aria-label="筛选精选项目"><button type="button" data-filter="all" aria-pressed="true">全部 <span>03</span></button><button type="button" data-filter="data" aria-pressed="false">数据工程</button><button type="button" data-filter="quant" aria-pressed="false">量化研究</button><button type="button" data-filter="agent" aria-pressed="false">Agent 工具</button></div><span class="filter-count mono" aria-live="polite">03 PROJECTS</span></div>
+      <div class="work-grid">
+        <article class="work-card flagship" data-category="data">
+          <div class="case-copy"><div class="case-topline"><p class="eyebrow">DATA ENGINEERING</p><span class="case-number">01</span></div><h3>让公告，<br>成为可用的数据。</h3><p class="project-name">上市公司委托理财分析框架</p><p class="case-description">把分散的上市公司公告连接成交易记录、机构关系与离线工作台。支持原文追溯、数据核验与导出。</p><div class="case-stats"><div><strong>16<span>家</span></strong><span>公开样例公司</span></div><div><strong>4,372</strong><span>样例交易记录</span></div></div><div class="tag-list"><span>Python</span><span>ECharts</span><span>JavaScript</span></div><a class="case-link" href="https://github.com/Leo984357/listed-company-wealth-framework">探索项目 <span aria-hidden="true">↗</span></a></div>
+          <div class="flagship-visual"><div class="visual-grid" aria-hidden="true"></div><div class="visual-coordinate mono">PUBLIC DATA → STRUCTURED EVIDENCE</div><a class="browser-preview" href="assets/workbench-preview.png" aria-label="打开委托理财工作台完整截图"><div class="browser-chrome"><span class="window-dots" aria-hidden="true">● ● ●</span><span>wealth-research / workbench</span><span aria-hidden="true">↗</span></div><img src="assets/workbench-preview.png" width="1440" height="1000" alt="仓库公开样例实际运行的委托理财工作台：资金规模、到期分布与公司分析" loading="lazy"></a><div class="preview-caption"><span class="status-dot" aria-hidden="true"></span> 真实运行界面 <span>样例基准日 / 2026-08-25</span></div></div>
+        </article>
+        <article class="work-card quant-card" data-category="quant">
+          <div class="case-topline"><p class="eyebrow">QUANTITATIVE RESEARCH</p><span class="case-number">02</span></div>
+          <div class="quant-visual" aria-label="量化研究流程示意：因子、模型、组合和评估"><div class="orbit orbit-one" aria-hidden="true"></div><div class="orbit orbit-two" aria-hidden="true"></div><div class="quant-center"><span>α</span><small>RESEARCH ENGINE</small></div><span class="orbit-node node-one">FACTORS</span><span class="orbit-node node-two">MODELS</span><span class="orbit-node node-three">PORTFOLIO</span><span class="orbit-node node-four">EVALUATE</span><span class="diagram-caption mono">WORKFLOW DIAGRAM / MOCK EXECUTION</span></div>
+          <div class="secondary-copy"><h3>QMT Investment<br>Assistant<span class="project-spark" aria-hidden="true">↗</span></h3><p>围绕沪深 300 的多因子研究框架。把模型训练、组合构建、回测评估与模拟执行连接起来。</p><div class="tag-list"><span>LightGBM / Ridge</span><span>配置化实验</span><span>模拟执行</span></div><a class="case-link" href="https://github.com/Leo984357/qmt_investment_assistant">查看研究方法与代码 <span aria-hidden="true">↗</span></a></div>
+        </article>
+        <article class="work-card agent-card" data-category="agent">
+          <div class="case-topline"><p class="eyebrow">AGENT WORKFLOW</p><span class="case-number">03</span></div>
+          <div class="agent-visual" aria-label="基金研究工作流示意：持仓输入、证据核验、分析报告"><div class="document-sheet sheet-back"><span class="mono">01 / INPUT</span><b>持仓 · 净值 · 研究材料</b><div class="doc-line"></div><div class="doc-line short"></div></div><div class="document-sheet sheet-front"><div class="sheet-label"><span class="mono">02 / RESEARCH OUTPUT</span><span class="sheet-star" aria-hidden="true">✳</span></div><b>证据，有迹可循。</b><div class="report-line"><span>来源核验</span><span>↗</span></div><div class="report-line"><span>风险计算</span><span>↗</span></div><div class="report-line"><span>组合分析</span><span>↗</span></div></div><span class="diagram-caption mono">WORKFLOW DIAGRAM / REPRODUCIBLE EXAMPLE</span></div>
+          <div class="secondary-copy"><h3>公募基金<br>投研 Skill<span class="project-spark" aria-hidden="true">✳</span></h3><p>从基金代码、持仓清单或截图出发，完成公开数据核验、风险计算、组合分析与换仓比较。</p><div class="tag-list"><span>Agent Skill</span><span>来源追溯</span><span>合成案例</span></div><a class="case-link" href="https://github.com/Leo984357/mutual-fund-research-skill/tree/main/examples">打开完整研究案例 <span aria-hidden="true">↗</span></a></div>
+        </article>
       </div>
-    </section>
-    <section class="section" aria-labelledby="more-title">
-      <div class="section-heading"><h2 id="more-title">研究实验与工具</h2><span class="eyebrow">MORE TO EXPLORE</span></div>
+      <div class="archive-heading"><p class="eyebrow">THE EXPLORATION CONTINUES</p><span>研究实验 / 工具 / 原型</span></div>
       <div class="project-list">
-        <a class="project-row" href="https://github.com/Leo984357/ashare-event-opportunity-engine"><span class="row-category">资本市场事件</span><span><strong>A-Share Event Opportunity Engine</strong><span class="row-description">公告关联、事件状态迁移与可追溯的证据链；提供合成样例。</span></span><span class="arrow" aria-hidden="true">↗</span></a>
-        <a class="project-row" href="https://github.com/Leo984357/hidden-pairs-factor"><span class="row-category">因子研究</span><span><strong>Hidden Pairs Factor</strong><span class="row-description">基金持仓覆盖的探索性研究，保留因子诊断、负结果与数据边界。</span></span><span class="arrow" aria-hidden="true">↗</span></a>
-        <a class="project-row" href="https://github.com/Leo984357/fund-pool-model"><span class="row-category">基金数据</span><span><strong>Fund Pool Model</strong><span class="row-description">净值入库、横截面评分、日度选基与组合权重导出。</span></span><span class="arrow" aria-hidden="true">↗</span></a>
-        <a class="project-row" href="https://github.com/Leo984357/strategy-audit-prototype"><span class="row-category">审计原型</span><span><strong>Strategy Audit</strong><span class="row-description">以 Solidity / Hardhat 演示策略登记、研究存证与角色权限。</span></span><span class="arrow" aria-hidden="true">↗</span></a>
-        <a class="project-row" href="https://github.com/Leo984357/remote-workflow-framework"><span class="row-category">工作流工程</span><span><strong>Remote Workflow Framework</strong><span class="row-description">Mac 与 Windows 间的任务路由、远程计算和可恢复备份原型。</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+        <a class="project-row" href="https://github.com/Leo984357/ashare-event-opportunity-engine"><span class="row-index">04</span><span class="row-name">A-Share Event Engine<small>公告关联、事件状态迁移与证据链</small></span><span class="row-category">EVENT RESEARCH</span><span class="row-arrow" aria-hidden="true">↗</span></a>
+        <a class="project-row" href="https://github.com/Leo984357/hidden-pairs-factor"><span class="row-index">05</span><span class="row-name">Hidden Pairs Factor<small>基金持仓覆盖研究，保留诊断与负结果</small></span><span class="row-category">FACTOR EXPERIMENT</span><span class="row-arrow" aria-hidden="true">↗</span></a>
+        <a class="project-row" href="https://github.com/Leo984357/fund-pool-model"><span class="row-index">06</span><span class="row-name">Fund Pool Model<small>净值入库、横截面评分与组合权重导出</small></span><span class="row-category">FUND DATA</span><span class="row-arrow" aria-hidden="true">↗</span></a>
+        <a class="project-row" href="https://github.com/Leo984357/strategy-audit-prototype"><span class="row-index">07</span><span class="row-name">Strategy Audit<small>策略登记、研究存证与角色权限原型</small></span><span class="row-category">SOLIDITY / HARDHAT</span><span class="row-arrow" aria-hidden="true">↗</span></a>
+        <a class="project-row" href="https://github.com/Leo984357/remote-workflow-framework"><span class="row-index">08</span><span class="row-name">Remote Workflow<small>跨系统任务路由、远程计算与恢复备份</small></span><span class="row-category">WORKFLOW ENGINEERING</span><span class="row-arrow" aria-hidden="true">↗</span></a>
       </div>
-      <details class="archive-links"><summary>课程项目与辅助工具</summary><div><a href="https://github.com/Leo984357/python-in-finance">Python in Finance ↗</a><a href="https://github.com/Leo984357/mcm-code-test">PPT 排版实验 ↗</a><a href="https://github.com/Leo984357/qmt-trading-strategy">QMT 策略脚本 ↗</a><a href="https://github.com/Leo984357/quant-apply">Quant Apply ↗</a></div></details>
+      <a class="all-repos" href="https://github.com/Leo984357?tab=repositories">继续探索 GitHub 仓库 <span aria-hidden="true">↗</span></a>
     </section>
-    <section id="research" class="section research" aria-labelledby="research-title">
-      <div><p class="eyebrow">RESEARCH INTERESTS</p><h2 id="research-title">问题驱动，<br>证据落地。</h2></div>
-      <div class="research-notes"><article><span class="eyebrow">01 / ALTERNATIVE DATA</span><h3>生成式 AI 暴露与资产定价</h3><p>从企业招聘文本构建公司层面的 AI 暴露指标，研究其与 A 股资产定价的关系。关注文本测度、公司匹配与面板数据构建。</p></article><article><span class="eyebrow">02 / REPRODUCIBLE RESEARCH</span><h3>让量化实验可以复核</h3><p>把数据时点、实验配置、交易成本和样本外评估放进研究流程，让结论对应明确的条件，也保留不支持原假设的结果。</p></article></div>
-    </section>
-    <section id="about" class="section about" aria-labelledby="about-title">
-      <div><p class="eyebrow">ABOUT</p><h2 id="about-title">经历与工具</h2><p class="about-note">金融工程 / 广东外语外贸大学<br>2023–2027 · 本科在读</p><p class="tool-label">日常使用</p><p class="tools">Python · pandas · SQL<br>LightGBM · scikit-learn<br>Git · SQLite · Streamlit · LaTeX</p></div>
-      <div class="timeline"><div><time>2026.07—至今</time><p><strong>华泰证券</strong><span>机构业务实习</span></p></div><div><time>2025.09—2025.11</time><p><strong>中国对外贸易中心</strong><span>贵宾事务实习</span></p></div><div><time>2025.07—2025.09</time><p><strong>证券时报</strong><span>研究实习</span></p></div><div><time>2024.07—2024.08</time><p><strong>腾讯 CSIG</strong><span>运营实习</span></p></div></div>
-    </section>
-    <section class="contact" aria-labelledby="contact-title"><div><p class="eyebrow">GET IN TOUCH</p><h2 id="contact-title">交流研究，也交流实现。</h2></div><a href="mailto:leo2974656036@foxmail.com">leo2974656036@foxmail.com <span aria-hidden="true">↗</span></a></section>
+
+    <section id="research" class="research-section" aria-labelledby="research-title"><div class="wrap research-layout"><div class="research-intro"><p class="eyebrow"><span>02</span> / RESEARCH NOTES</p><h2 id="research-title">好问题，<br>值得追到底<span>。</span></h2><p>关注数据如何形成信号，<br>以及信号在什么条件下成立。</p><div class="research-symbol" aria-hidden="true">ƒ<span>(x)</span><i>→</i> α</div></div><div class="research-notes"><article><span class="note-number">I.</span><div><p class="eyebrow">ALTERNATIVE DATA × ASSET PRICING</p><h3>生成式 AI 暴露与资产定价</h3><p>从企业招聘文本构建公司层面的 AI 暴露指标，研究其与 A 股资产定价的关系。把文本测度、公司匹配与面板构建放在同一条研究链上。</p><div class="note-tags"><span>文本测度</span><span>公司面板</span><span>A 股</span></div></div></article><article><span class="note-number">II.</span><div><p class="eyebrow">REPRODUCIBLE RESEARCH</p><h3>让量化实验可以复核</h3><p>记录数据时点、实验配置与交易成本；用样本外评估检验结论，也保留不支持原假设的结果。</p><a href="https://github.com/Leo984357/hidden-pairs-factor">阅读一次因子实验 <span aria-hidden="true">↗</span></a></div></article></div></div></section>
+
+    <section id="about" class="about-section wrap" aria-labelledby="about-title"><div class="about-intro"><p class="eyebrow"><span>03</span> / THE PERSON BEHIND THE WORK</p><h2 id="about-title">保持好奇。<br><span>持续构建。</span></h2><p class="about-bio">我是李硕仁，广东外语外贸大学金融工程本科在读。喜欢从现实里的金融问题出发，在研究与工程之间来回探索。</p><div class="education"><span class="mono">EDUCATION</span><p>广东外语外贸大学 <span>金融工程 · 2023—2027</span></p></div><div class="toolbox"><span class="mono">DAILY TOOLBOX</span><div><span>Python</span><span>pandas</span><span>SQL</span><span>LightGBM</span><span>Git</span><span>Streamlit</span><span>LaTeX</span></div></div></div><div class="experience"><p class="eyebrow">EXPERIENCE / 实习经历</p><div class="timeline"><article><div class="timeline-dot" aria-hidden="true"></div><time>2026.07 — 至今</time><h3>华泰证券</h3><p>机构业务实习</p></article><article><div class="timeline-dot" aria-hidden="true"></div><time>2025.09 — 2025.11</time><h3>中国对外贸易中心</h3><p>贵宾事务实习</p></article><article><div class="timeline-dot" aria-hidden="true"></div><time>2025.07 — 2025.09</time><h3>证券时报</h3><p>研究实习</p></article><article><div class="timeline-dot" aria-hidden="true"></div><time>2024.07 — 2024.08</time><h3>腾讯 CSIG</h3><p>运营实习</p></article></div></div></section>
+
+    <section class="contact-section wrap" aria-labelledby="contact-title"><div class="contact-top"><p class="eyebrow">HAVE AN INTERESTING PROBLEM?</p><a href="https://github.com/Leo984357">GITHUB ↗</a></div><a class="contact-title-link" href="mailto:leo2974656036@foxmail.com"><h2 id="contact-title">LET'S TALK<span aria-hidden="true">↗</span></h2></a><div class="contact-bottom"><p>交流研究，也交流实现。</p><a href="mailto:leo2974656036@foxmail.com">leo2974656036@foxmail.com</a></div></section>
   </main>
-  <footer class="wrap"><span>Shuoren Li · 李硕仁</span><span><a href="assets/ARTWORK.md">画作来源</a> · <a href="https://github.com/Leo984357/Leo984357.github.io">网站源码 ↗</a></span></footer>
+  <footer class="wrap"><span>© 2026 SHUOREN LI</span><span class="footer-note">BUILT WITH CURIOSITY. & A FEW THOUSAND CHARACTERS.</span><a href="https://github.com/Leo984357/Leo984357.github.io">网站源码 ↗</a></footer>
+
+  <dialog id="command-palette" aria-labelledby="command-title"><div class="command-header"><span class="command-icon" aria-hidden="true">⌘</span><label id="command-title" for="command-search">快速导航</label><button type="button" class="command-close" aria-label="关闭快捷导航">ESC</button></div><input id="command-search" type="search" placeholder="搜索项目或跳转页面…" autocomplete="off" spellcheck="false" aria-controls="command-results" role="combobox" aria-autocomplete="list" aria-expanded="true"><div id="command-results" role="listbox" aria-label="快捷导航结果"></div><p class="command-help"><span>↑ ↓ 选择</span><span>↵ 打开</span><span>esc 关闭</span></p></dialog>
 </body>
 </html>
