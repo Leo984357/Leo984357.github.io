@@ -1,23 +1,33 @@
-# Leo984357.github.io
+# Shuoren Li · 个人作品集
 
-Terminal-style personal homepage for **Shuoren Li** — Quantitative Finance, Alternative Data, Asset Pricing.
+围绕量化研究、金融数据工程与研究工具的个人主页。精选项目、真实界面、研究方向和经历在页面加载后直接可见。
 
-## Tech
+**在线访问：[leo984357.github.io](https://leo984357.github.io/)**
 
-- Vanilla HTML/CSS/JS
-- JetBrains Mono + Noto Sans SC
-- Terminal UI with auto-typing effect
-- Shields.io badges
+## 本地预览
 
-## Sections
+```bash
+python3 -m http.server 8000
+```
 
-- `whoami` — about me (CN/EN)
-- `ls skills/` — tech stack
-- `ls -l projects/` — projects with descriptions
-- `cat experience.md` — work & education
-- `cat research.md` — publications
-- `./contact.sh` — contact badges
+打开 <http://localhost:8000>。无需安装依赖或构建。
 
-## Live
+## 页面结构
 
-https://leo984357.github.io/
+- 《星月夜》横幅与个人介绍
+- 三个精选项目：委托理财分析框架、QMT 研究系统、公募基金投研 Skill
+- 研究实验、辅助工具、研究方向与经历
+- 邮件、GitHub 与项目源码入口
+
+## 维护
+
+| 文件 | 内容 |
+| --- | --- |
+| [index.html](index.html) | 语义化页面内容、项目链接与分享元信息 |
+| [style.css](style.css) | 桌面和手机布局、键盘焦点、减少动态效果设置 |
+| [assets/](assets/) | 自托管画作、真实工作台截图与图标 |
+| [404.html](404.html) | 页面不存在时的返回入口 |
+
+网站使用原生 HTML/CSS，正文与导航无需 JavaScript。项目介绍以公开仓库当前实现为准，数据样例和原型状态在项目页中说明。
+
+画作来源和展示方式见 [ARTWORK.md](assets/ARTWORK.md)。工作台截图来自仓库公开脱敏样例，基准日 2026-08-25。
