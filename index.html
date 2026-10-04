@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>李硕仁 Shuoren Li — Research × Engineering</title>
   <meta name="description" content="李硕仁的研究与工程作品集：金融数据、量化研究、智能体工作流。从真实问题出发，把研究做成可用的工具。">
-  <meta name="theme-color" content="#080d14">
+  <meta name="theme-color" content="#111211">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Shuoren Li — Research × Engineering">
   <meta property="og:description" content="金融研究，落到数据与工具。探索项目、实验与彩色 ASCII 星空。">
@@ -27,14 +27,14 @@
   <main id="main">
     <section class="hero wrap" aria-labelledby="hero-title">
       <div class="hero-kicker"><span><i class="status-dot" aria-hidden="true"></i> FINANCIAL ENGINEERING / GUANGZHOU</span><span class="hero-edition">PERSONAL PORTFOLIO — VOL. 2026</span></div>
-      <h1 id="hero-title">SHUOREN <span>LI</span><span class="hero-asterisk" aria-hidden="true">✳</span></h1>
+      <h1 id="hero-title">SHUOREN <span>LI</span></h1>
       <div class="hero-statement"><p>李硕仁 · 金融研究，落到数据与工具。</p><p class="mono">FIND THE SIGNAL.<br>BUILD SOMETHING REAL.</p></div>
       <figure class="artwork" id="artwork">
         <div class="art-topline"><span><span class="art-dot" aria-hidden="true"></span> THE STARRY NIGHT <span class="dim">/ ASCII INTERPRETATION</span></span><span>160 × 28</span></div>
         <div class="art-stage">
           <img id="ascii-fallback" src="assets/starry-night-ascii.svg" width="1600" height="560" fetchpriority="high" alt="以 4,386 个彩色 ASCII 字符重新呈现梵高《星月夜》的旋涡、星光与月亮">
           <canvas id="ascii-canvas" width="1600" height="560" aria-hidden="true"></canvas>
-          <div class="art-crosshair crosshair-tl" aria-hidden="true">+</div><div class="art-crosshair crosshair-br" aria-hidden="true">+</div>
+
         </div>
         <figcaption><span class="art-hint" id="art-hint">4,386 GLYPHS · ONE STARRY NIGHT</span><div><a href="assets/ARTWORK.md" aria-label="查看 ASCII 画作来源">VAN GOGH, 1889 ↗</a><button id="motion-toggle" type="button" aria-pressed="false" hidden><span class="pause-icon" aria-hidden="true">Ⅱ</span> 暂停星光</button></div></figcaption>
       </figure>
@@ -47,17 +47,17 @@
       <div class="work-grid">
         <article class="work-card flagship" data-category="data">
           <div class="case-copy"><div class="case-topline"><p class="eyebrow">DATA ENGINEERING</p><span class="case-number">01</span></div><h3>让公告，<br>成为可用的数据。</h3><p class="project-name">上市公司委托理财分析框架</p><p class="case-description">把分散的上市公司公告连接成交易记录、机构关系与离线工作台。支持原文追溯、数据核验与导出。</p><div class="case-stats"><div><strong>16<span>家</span></strong><span>公开样例公司</span></div><div><strong>4,372</strong><span>样例交易记录</span></div></div><div class="tag-list"><span>Python</span><span>ECharts</span><span>JavaScript</span></div><a class="case-link" href="https://github.com/Leo984357/listed-company-wealth-framework">探索项目 <span aria-hidden="true">↗</span></a></div>
-          <div class="flagship-visual"><div class="visual-grid" aria-hidden="true"></div><div class="visual-coordinate mono">PUBLIC DATA → STRUCTURED EVIDENCE</div><a class="browser-preview" href="assets/workbench-preview.png" aria-label="打开委托理财工作台完整截图"><div class="browser-chrome"><span class="window-dots" aria-hidden="true">● ● ●</span><span>wealth-research / workbench</span><span aria-hidden="true">↗</span></div><img src="assets/workbench-preview.png" width="1440" height="1000" alt="仓库公开样例实际运行的委托理财工作台：资金规模、到期分布与公司分析" loading="lazy"></a><div class="preview-caption"><span class="status-dot" aria-hidden="true"></span> 真实运行界面 <span>样例基准日 / 2026-08-25</span></div></div>
+          <div class="flagship-visual"><div class="visual-coordinate mono">PUBLIC DATA → STRUCTURED EVIDENCE</div><a class="browser-preview" href="assets/workbench-preview.png" aria-label="打开委托理财工作台完整截图"><div class="browser-chrome"><span class="window-dots" aria-hidden="true">● ● ●</span><span>wealth-research / workbench</span><span aria-hidden="true">↗</span></div><img src="assets/workbench-preview.png" width="1440" height="1000" alt="仓库公开样例实际运行的委托理财工作台：资金规模、到期分布与公司分析" loading="lazy"></a><div class="preview-caption"><span class="status-dot" aria-hidden="true"></span> 真实运行界面 <span>样例基准日 / 2026-08-25</span></div></div>
         </article>
         <article class="work-card quant-card" data-category="quant">
           <div class="case-topline"><p class="eyebrow">QUANTITATIVE RESEARCH</p><span class="case-number">02</span></div>
-          <div class="quant-visual" aria-label="量化研究流程示意：因子、模型、组合和评估"><div class="orbit orbit-one" aria-hidden="true"></div><div class="orbit orbit-two" aria-hidden="true"></div><div class="quant-center"><span>α</span><small>RESEARCH ENGINE</small></div><span class="orbit-node node-one">FACTORS</span><span class="orbit-node node-two">MODELS</span><span class="orbit-node node-three">PORTFOLIO</span><span class="orbit-node node-four">EVALUATE</span><span class="diagram-caption mono">WORKFLOW DIAGRAM / MOCK EXECUTION</span></div>
-          <div class="secondary-copy"><h3>QMT Investment<br>Assistant<span class="project-spark" aria-hidden="true">↗</span></h3><p>围绕沪深 300 的多因子研究框架。把模型训练、组合构建、回测评估与模拟执行连接起来。</p><div class="tag-list"><span>LightGBM / Ridge</span><span>配置化实验</span><span>模拟执行</span></div><a class="case-link" href="https://github.com/Leo984357/qmt_investment_assistant">查看研究方法与代码 <span aria-hidden="true">↗</span></a></div>
+          <div class="quant-visual" aria-label="量化研究流程示意：因子、模型、组合和评估"><div class="workflow-panel"><div class="workflow-label"><span>research.run</span><span>MOCK</span></div><div class="workflow-row"><span class="workflow-step">01</span><span>factors</span><span class="workflow-detail">因子构建</span></div><div class="workflow-row"><span class="workflow-step">02</span><span>models</span><span class="workflow-detail">模型训练</span></div><div class="workflow-row"><span class="workflow-step">03</span><span>portfolio</span><span class="workflow-detail">组合构建</span></div><div class="workflow-row"><span class="workflow-step">04</span><span>evaluate</span><span class="workflow-detail">成本后回测</span></div></div><span class="diagram-caption mono">WORKFLOW DIAGRAM / MOCK EXECUTION</span></div>
+          <div class="secondary-copy"><h3>QMT Investment<br>Assistant</h3><p>围绕沪深 300 的多因子研究框架。把模型训练、组合构建、回测评估与模拟执行连接起来。</p><div class="tag-list"><span>LightGBM / Ridge</span><span>配置化实验</span><span>模拟执行</span></div><a class="case-link" href="https://github.com/Leo984357/qmt_investment_assistant">查看研究方法与代码 <span aria-hidden="true">↗</span></a></div>
         </article>
         <article class="work-card agent-card" data-category="agent">
           <div class="case-topline"><p class="eyebrow">AGENT WORKFLOW</p><span class="case-number">03</span></div>
-          <div class="agent-visual" aria-label="基金研究工作流示意：持仓输入、证据核验、分析报告"><div class="document-sheet sheet-back"><span class="mono">01 / INPUT</span><b>持仓 · 净值 · 研究材料</b><div class="doc-line"></div><div class="doc-line short"></div></div><div class="document-sheet sheet-front"><div class="sheet-label"><span class="mono">02 / RESEARCH OUTPUT</span><span class="sheet-star" aria-hidden="true">✳</span></div><b>证据，有迹可循。</b><div class="report-line"><span>来源核验</span><span>↗</span></div><div class="report-line"><span>风险计算</span><span>↗</span></div><div class="report-line"><span>组合分析</span><span>↗</span></div></div><span class="diagram-caption mono">WORKFLOW DIAGRAM / REPRODUCIBLE EXAMPLE</span></div>
-          <div class="secondary-copy"><h3>公募基金<br>投研 Skill<span class="project-spark" aria-hidden="true">✳</span></h3><p>从基金代码、持仓清单或截图出发，完成公开数据核验、风险计算、组合分析与换仓比较。</p><div class="tag-list"><span>Agent Skill</span><span>来源追溯</span><span>合成案例</span></div><a class="case-link" href="https://github.com/Leo984357/mutual-fund-research-skill/tree/main/examples">打开完整研究案例 <span aria-hidden="true">↗</span></a></div>
+          <div class="agent-visual" aria-label="基金研究工作流示意：持仓输入、证据核验、分析报告"><div class="workflow-panel"><div class="workflow-label"><span>fund.research</span><span>CASE 001</span></div><div class="workflow-row"><span class="workflow-step">01</span><span>input</span><span class="workflow-detail">持仓与净值</span></div><div class="workflow-row"><span class="workflow-step">02</span><span>verify</span><span class="workflow-detail">来源核验</span></div><div class="workflow-row"><span class="workflow-step">03</span><span>compute</span><span class="workflow-detail">风险计算</span></div><div class="workflow-row"><span class="workflow-step">04</span><span>report</span><span class="workflow-detail">研究报告</span></div></div><span class="diagram-caption mono">WORKFLOW DIAGRAM / REPRODUCIBLE EXAMPLE</span></div>
+          <div class="secondary-copy"><h3>公募基金<br>投研 Skill</h3><p>从基金代码、持仓清单或截图出发，完成公开数据核验、风险计算、组合分析与换仓比较。</p><div class="tag-list"><span>Agent Skill</span><span>来源追溯</span><span>合成案例</span></div><a class="case-link" href="https://github.com/Leo984357/mutual-fund-research-skill/tree/main/examples">打开完整研究案例 <span aria-hidden="true">↗</span></a></div>
         </article>
       </div>
       <div class="archive-heading"><p class="eyebrow">THE EXPLORATION CONTINUES</p><span>研究实验 / 工具 / 原型</span></div>

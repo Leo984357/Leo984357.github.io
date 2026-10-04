@@ -132,20 +132,7 @@
       });
     }, { rootMargin: '-10% 0px -65% 0px' });
     ['projects', 'research', 'about'].forEach(id => navigationObserver.observe(document.getElementById(id)));
-    const revealObserver = new IntersectionObserver(entries => entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        if (!reducedMotion.matches) entry.target.classList.add('reveal-enter');
-        revealObserver.unobserve(entry.target);
-      }
-    }), { threshold: .08 });
-    $$('.work-card, .research-notes article, .about-intro, .experience').forEach(node => revealObserver.observe(node));
   }
-  $$('.work-card').forEach(card => card.addEventListener('pointermove', event => {
-    if (reducedMotion.matches || event.pointerType === 'touch') return;
-    const box = card.getBoundingClientRect();
-    card.style.setProperty('--pointer-x', `${event.clientX - box.left}px`);
-    card.style.setProperty('--pointer-y', `${event.clientY - box.top}px`);
-  }, { passive: true }));
 
   // The art remains a real character grid. Read the source SVG's colored glyphs,
   // paint one cached layer, then relight only the glyphs around the pointer.
@@ -198,8 +185,8 @@
           if (Math.abs(dx) > radius || Math.abs(dy) > radius) continue;
           const distance = Math.sqrt(dx * dx + dy * dy);
           if (distance > radius) continue;
-          const light = Math.pow(1 - distance / radius, 1.3) * (pointer.active ? .82 : .35);
-          context.fillStyle = `rgba(211,245,250,${light})`;
+          const light = Math.pow(1 - distance / radius, 1.3) * (pointer.active ? .38 : .10);
+          context.fillStyle = `rgba(231,232,226,${light})`;
           context.fillText(glyph.character, glyph.x, glyph.y);
         }
       }

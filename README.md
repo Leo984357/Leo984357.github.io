@@ -2,7 +2,7 @@
 
 [**打开作品集 ↗**](https://leo984357.github.io/)
 
-金融数据、量化研究与 Agent 工具。以彩色 ASCII 星空为视觉主线，用真实界面和公开案例展示研究与工程成果。
+金融数据、量化研究与 Agent 工具。以彩色 ASCII 星空为视觉主线，用真实界面和公开案例展示研究与工程成果。页面采用深灰、米白和低饱和强调色，搭配等宽字体与扁平面板。
 
 ![The Starry Night — 4,386 colored ASCII characters](assets/starry-night-ascii.png)
 
