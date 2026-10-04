@@ -134,77 +134,85 @@
     ['projects', 'research', 'about'].forEach(id => navigationObserver.observe(document.getElementById(id)));
   }
 
-  // The art remains a real character grid. Read the source SVG's colored glyphs,
-  // paint one cached layer, then relight only the glyphs around the pointer.
+  // Play deterministic character frames; the static SVG is the loading/failure fallback.
   async function initializeAscii() {
     const canvas = $('#ascii-canvas');
     const stage = $('.art-stage');
     const context = canvas.getContext('2d', { alpha: false });
     if (!context) return;
-    const response = await fetch('assets/starry-night-ascii.svg');
+    const response = await fetch('assets/starry-night-frames.json');
     if (!response.ok) return;
-    const xml = new DOMParser().parseFromString(await response.text(), 'image/svg+xml');
-    if (xml.querySelector('parsererror')) return;
-    const glyphs = $$('text', xml).map(node => ({ x: +node.getAttribute('x'), y: +node.getAttribute('y'), color: node.getAttribute('fill'), character: node.textContent }));
-    if (!glyphs.length) return;
-    const base = document.createElement('canvas');
-    base.width = 1600; base.height = 560;
-    const baseContext = base.getContext('2d', { alpha: false });
-    if (!baseContext) return;
+    const sequence = await response.json();
+    const { columns, rows, cellWidth, cellHeight, width, height, fps, palette, frames } = sequence;
+    const cellCount = columns * rows;
+    if (width !== 1600 || height !== 560 || columns !== 160 || rows !== 28 ||
+        !Number.isFinite(fps) || fps <= 0 || fps > 30 || !Array.isArray(palette) ||
+        !Array.isArray(frames) || frames.length < 2 || frames.some(frame =>
+          typeof frame.characters !== 'string' || frame.characters.length !== cellCount ||
+          frame.colorIndices.length !== cellCount)) return;
+    const colors = palette.map(color => `#${color}`);
     const font = '16px Menlo, "DejaVu Sans Mono", Consolas, monospace';
-    baseContext.fillStyle = '#0d1117';
-    baseContext.fillRect(0, 0, 1600, 560);
-    baseContext.font = font;
-    for (const glyph of glyphs) { baseContext.fillStyle = glyph.color; baseContext.fillText(glyph.character, glyph.x, glyph.y); }
-    context.font = font;
-    context.drawImage(base, 0, 0);
+    let frameIndex = -1;
+    const paintFrame = index => {
+      const frame = frames[index];
+      context.fillStyle = '#0d1117';
+      context.fillRect(0, 0, width, height);
+      context.font = font;
+      for (let cell = 0; cell < cellCount; cell++) {
+        const character = frame.characters[cell];
+        if (character === ' ') continue;
+        context.fillStyle = colors[frame.colorIndices[cell]];
+        context.fillText(character, (cell % columns) * cellWidth + 1, Math.floor(cell / columns) * cellHeight + 16);
+      }
+      frameIndex = index;
+      canvas.dataset.frame = String(index);
+    };
+    paintFrame(0);
     stage.classList.add('is-ready');
     const toggle = $('#motion-toggle');
     toggle.hidden = false;
     let paused = reducedMotion.matches;
-    let pointer = { x: 800, y: 270, active: false };
     let animation = 0;
     let inView = true;
-    let lastPaint = 0;
+    let playhead = 0;
+    let lastTime = null;
+    const frameDuration = 1000 / fps;
     const refreshButton = () => {
       toggle.setAttribute('aria-pressed', String(paused));
-      toggle.innerHTML = `<span class="pause-icon" aria-hidden="true">${paused ? '▷' : 'Ⅱ'}</span> ${paused ? '开启星光' : '暂停星光'}`;
-      $('#art-hint').textContent = paused ? '4,386 GLYPHS · ONE STARRY NIGHT' : (matchMedia('(pointer: coarse)').matches ? '轻触星空 · 点亮字符' : '移动光标 · 点亮字符');
+      toggle.innerHTML = `<span class="pause-icon" aria-hidden="true">${paused ? '▷' : 'Ⅱ'}</span> ${paused ? '播放星空' : '暂停星空'}`;
+      $('#art-hint').textContent = paused ? 'STARRY NIGHT / PAUSED' : 'STARRY NIGHT / IN MOTION';
     };
     const draw = time => {
       animation = 0;
       if (paused || !inView || document.hidden) return;
-      if (time - lastPaint >= 38) {
-        lastPaint = time;
-        context.drawImage(base, 0, 0);
-        const x = pointer.active ? pointer.x : 800 + Math.sin(time / 7000) * 570;
-        const y = pointer.active ? pointer.y : 240 + Math.sin(time / 4100) * 125;
-        const radius = pointer.active ? 155 : 115;
-        for (const glyph of glyphs) {
-          const dx = glyph.x - x, dy = glyph.y - y;
-          if (Math.abs(dx) > radius || Math.abs(dy) > radius) continue;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-          if (distance > radius) continue;
-          const light = Math.pow(1 - distance / radius, 1.3) * (pointer.active ? .38 : .10);
-          context.fillStyle = `rgba(231,232,226,${light})`;
-          context.fillText(glyph.character, glyph.x, glyph.y);
-        }
-      }
+      if (lastTime !== null) playhead += time - lastTime;
+      lastTime = time;
+      const index = Math.floor(playhead / frameDuration) % frames.length;
+      if (index !== frameIndex) paintFrame(index);
       animation = requestAnimationFrame(draw);
     };
-    const start = () => { if (!animation && !paused && inView && !document.hidden) animation = requestAnimationFrame(draw); };
-    const stop = () => { cancelAnimationFrame(animation); animation = 0; context.drawImage(base, 0, 0); };
-    toggle.addEventListener('click', () => { paused = !paused; refreshButton(); if (paused) stop(); else start(); });
-    const setPointer = event => {
-      const rect = canvas.getBoundingClientRect();
-      pointer = { x: (event.clientX - rect.left) * 1600 / rect.width, y: (event.clientY - rect.top) * 560 / rect.height, active: true };
+    const start = () => {
+      if (!animation && !paused && inView && !document.hidden) {
+        lastTime = null;
+        animation = requestAnimationFrame(draw);
+      }
     };
-    stage.addEventListener('pointermove', setPointer, { passive: true });
-    stage.addEventListener('pointerdown', setPointer, { passive: true });
-    stage.addEventListener('pointerleave', () => { pointer.active = false; });
-    stage.addEventListener('pointerup', event => { if (event.pointerType === 'touch') pointer.active = false; });
+    const stop = () => {
+      cancelAnimationFrame(animation);
+      animation = 0;
+      lastTime = null;
+    };
+    toggle.addEventListener('click', () => {
+      paused = !paused;
+      refreshButton();
+      if (paused) stop(); else start();
+    });
     document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
-    reducedMotion.addEventListener('change', event => { paused = event.matches; refreshButton(); if (paused) stop(); else start(); });
+    reducedMotion.addEventListener('change', event => {
+      paused = event.matches;
+      refreshButton();
+      if (paused) { stop(); playhead = 0; paintFrame(0); } else start();
+    });
     if ('IntersectionObserver' in window) new IntersectionObserver(entries => {
       inView = entries[0].isIntersecting;
       if (inView) start(); else stop();
@@ -212,5 +220,5 @@
     refreshButton();
     start();
   }
-  initializeAscii().catch(() => { /* The original SVG remains visible on any initialization failure. */ });
+  initializeAscii().catch(() => { /* The original SVG remains visible on initialization failure. */ });
 })();

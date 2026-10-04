@@ -10,3 +10,9 @@ The banner is **colored ASCII art**, built from a regular grid of 160 columns ×
 - Generator: https://github.com/Leo984357/Leo984357/blob/main/scripts/build_ascii_banner.py (Python + Pillow).
 
 The website also uses a browser-rendered PNG of the same character SVG for social link previews.
+
+## Looping character animation
+
+The animation uses 48 deterministic frames at 8 fps (6 seconds per loop), stored in [starry-night-frames.json](starry-night-frames.json). Two local flow fields move the nebula while preserving the moon and outer regions. Characters stay on a fixed monospace grid; color and character density are sampled for each frame. The first frame preserves the static SVG's character grid.
+
+Frame generator: [build_ascii_animation.py](https://github.com/Leo984357/Leo984357/blob/main/scripts/build_ascii_animation.py). Playback pauses off screen or in a hidden tab; the pause button holds the current frame, and reduced-motion preferences show a still frame.
