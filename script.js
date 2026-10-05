@@ -23,7 +23,7 @@
   const commands = [
     { title: '精选作品', hint: '01 / SELECTED WORK', href: '#projects', keywords: '作品 projects work' },
     { title: '研究方向', hint: '02 / RESEARCH', href: '#research', keywords: '研究 research' },
-    { title: '关于李硕仁', hint: '03 / ABOUT', href: '#about', keywords: '关于 about experience' },
+    { title: '技术栈与经历', hint: '03 / TECH STACK', href: '#about', keywords: '技术栈 技能 stack tools 关于 about experience' },
     { title: '上市公司委托理财分析框架', hint: 'GITHUB ↗', href: 'https://github.com/Leo984357/listed-company-wealth-framework', keywords: '数据 wealth data echarts javascript json' },
     { title: 'QMT Investment Assistant', hint: 'GITHUB ↗', href: 'https://github.com/Leo984357/qmt_investment_assistant', keywords: '量化 quant qmt 模型' },
     { title: '公募基金投研 Skill', hint: 'EXAMPLES ↗', href: 'https://github.com/Leo984357/mutual-fund-research-skill/tree/main/examples', keywords: '基金 agent skill fund' },
